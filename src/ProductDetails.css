@@ -1,0 +1,35 @@
+/* ProductDetails.css */
+
+/* ... other styles ... */
+
+/* Style the product details container */
+.product-details {
+	text-align: center;
+	padding: 20px;
+	background-color: #f0f0f0; /* Change the background color */
+	border-radius: 10px; /* Add border radius to the container */
+}
+
+/* Style the product name */
+.product-name {
+	font-size: 2rem;
+	margin-bottom: 10px;
+	color: #333;
+}
+
+/* Style the product price */
+.product-price {
+	font-size: 1.2rem;
+	margin-bottom: 10px;
+	color: #666;
+}
+
+/* Style the product image */
+.product-image {
+	width: 50vw; /* Set the width to 50% of the viewport width */
+	height: auto; /* Allow the image to adjust its height while maintaining aspect ratio */
+	display: block; /* Remove any residual spacing */
+	margin: 0 auto; /* Center the image horizontally */
+	border-radius: 10px; /* Add border radius to the image */
+}
+/* ... other styles ... */
