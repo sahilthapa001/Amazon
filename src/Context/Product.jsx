@@ -5,47 +5,47 @@ export const ProductContext = createContext();
 
 // Context provider component
 const ProductProvider = ({ children }) => {
-	const [products, setProducts] = useState([]);
-	const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
-	const [isLoading, setIsLoading] = useState(true);
-	const [eror, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const response = await fetch("https://gateway.syronx.com/");
-				if (response.status !== 200) {
-					throw new Error("Network response was not ok");
-				}
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("./data/itemList.json");
+        if (response.status !== 200) {
+          throw new Error("Network response was not ok");
+        }
 
-				const data = await response.json();
-				setProducts(data.data);
-				setFilteredProducts(data.data);
-				setIsLoading(false);
-			} catch (error) {
-				setError(error.message);
-				setIsLoading(false);
-			}
-		}
+        const data = await response.json();
+        setProducts(data);
+        setFilteredProducts(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setIsLoading(false);
+      }
+    }
 
-		fetchData();
-	}, []);
+    fetchData();
+  }, []);
 
-	const providerValue = {
-		products,
-		setProducts,
-		isLoading,
-		eror,
-		filteredProducts,
-		setFilteredProducts,
-	};
+  const providerValue = {
+    products,
+    setProducts,
+    isLoading,
+    error,
+    filteredProducts,
+    setFilteredProducts,
+  };
 
-	return (
-		<ProductContext.Provider value={providerValue}>
-			{children}
-		</ProductContext.Provider>
-	);
+  return (
+    <ProductContext.Provider value={providerValue}>
+      {children}
+    </ProductContext.Provider>
+  );
 };
 
 export default ProductProvider;
